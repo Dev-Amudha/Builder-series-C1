@@ -45,4 +45,6 @@ if __name__ == '__main__':
     docs_content = get_code_content(path)
     cli()
     print("✅ Documentation generation complete.")
+    print("✅ Documentation generation complete.")
+    
     
