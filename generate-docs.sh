@@ -8,7 +8,7 @@ echo "🤖 Starting documentation generation with Amazon Q..."
 PROMPT_TEXT="Based on the latest git changes, please generate a summary of the README.md file. Include any new features or breaking changes. @git"
 
 # Execute the qchat command, ensuring all flags are correct.
-qchat chat  "$PROMPT_TEXT" --output-file "temp_readme_update.md"
+qchat chat -- --prompt "$PROMPT_TEXT" --output-file "temp_readme_update.md"
 
 # Append the new content to the main README.md file.
 cat temp_readme_update.md >> README.md
