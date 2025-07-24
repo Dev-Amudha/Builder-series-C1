@@ -1,37 +1,20 @@
 #!/bin/bash
-
-# A script to non-interactively generate a README.md using Amazon Q Developer CLI
+# Exit immediately if any command fails.
+set -e
 
 echo "🤖 Starting documentation generation with Amazon Q..."
 
-# Define the prompt that will be sent to Amazon Q.
-# You can customize this prompt to get better results!
-prompt="
-Analyze the current state of the code in this project repository.
-Generate a complete README.md file for it.
-The README should include the following sections:
-- A brief project description.
-- Installation instructions for any dependencies found (e.g., from package.json or requirements.txt).
-- Usage examples based on the primary functions or entry points of the code.
-- A summary of the project structure.
-Do not add any conversational text before or after the markdown content.
-"
+# The prompt for Amazon Q. The @git modifier tells Q to look at the repo's changes.
+prompt="Based on the latest git changes, please generate a summary for the README.md file. Include any new features, breaking changes, and updated usage instructions. @git"
 
-# Use a 'here document' (<<EOF) to send the multi-line prompt
-# to the 'q chat' command non-interactively.
-# The --quiet flag minimizes extra output from the q cli itself.
+# Send the prompt to Amazon Q.
+qchat chat --prompt "$prompt" --output-file "temp_readme_update.md"
 
-# q chat -- --quiet -- <<EOF > README.md
-qchat chat -- --prompt "$prompt" --output-file "temp_readme_update.md"
-
-#$PROMPT
-#/doc
-#EOF
-
+# Append the new content to the main README.md file.
+# You can customize this logic if you want to replace a specific section.
 cat temp_readme_update.md >> README.md
 rm temp_readme_update.md
 
 echo "✅ README.md has been successfully updated."
 echo "   Please review it, then 'git add README.md' and amend your commit."
 echo "   To amend, run: git commit --amend --no-edit"
-
