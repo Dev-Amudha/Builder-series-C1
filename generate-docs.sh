@@ -6,7 +6,7 @@ echo "🤖 Starting documentation generation with Amazon Q..."
 
 # Define the prompt that will be sent to Amazon Q.
 # You can customize this prompt to get better results!
-PROMPT="
+prompt="
 Analyze the current state of the code in this project repository.
 Generate a complete README.md file for it.
 The README should include the following sections:
@@ -22,12 +22,16 @@ Do not add any conversational text before or after the markdown content.
 # The --quiet flag minimizes extra output from the q cli itself.
 
 # q chat -- --quiet -- <<EOF > README.md
-qchat chat -- --prompt "$prompt" --output-file "README_temp.md"
+qchat chat -- --prompt "$prompt" --output-file "temp_readme_update.md"
 
 #$PROMPT
 #/doc
 #EOF
 
-echo "✅ README.md has been successfully generated or updated."
-echo "Please review it, then 'git add README.md' and amend your commit."
+cat temp_readme_update.md >> README.md
+rm temp_readme_update.md
+
+echo "✅ README.md has been successfully updated."
+echo "   Please review it, then 'git add README.md' and amend your commit."
+echo "   To amend, run: git commit --amend --no-edit"
 
