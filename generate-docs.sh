@@ -5,7 +5,7 @@ set -e
 echo "🤖 Starting documentation generation with Amazon Q..."
 
 # The prompt for Amazon Q. The @git modifier tells Q to look at the repo's changes.
-prompt_text= 'Based on the latest git changes, please generate a summary for the README.md file. Include any new features, breaking changes, and updated usage instructions. @git'
+prompt_text= 'Based on the latest git changes, please generate a summary for the README.md file. Include any new features, breaking changes, and updated usage instructions.'
 
 # Send the prompt to Amazon Q.
 qchat chat -- --prompt "$prompt_text" --output-file "temp_readme_update.md"
