@@ -23,9 +23,10 @@ Do not add any conversational text before or after the markdown content.
 
 # q chat -- --quiet -- <<EOF > README.md
 qchat chat --prompt "$prompt" --output-file "README_temp.md"
-$PROMPT
-/doc
-EOF
+
+#$PROMPT
+#/doc
+#EOF
 
 echo "✅ README.md has been successfully generated or updated."
 echo "   Please review it, then 'git add README.md' and amend your commit."
