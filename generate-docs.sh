@@ -3,12 +3,12 @@
 set -e
 
 echo "🤖 Starting documentation generation with Amazon Q..."
-
+touch temp_readme_update.md
 # THE FIX IS HERE: No spaces are allowed around the '=' sign in variable assignments.
 #PROMPT_TEXT="Based on the latest git changes, please generate a summary of the README.md file. Include any new features or breaking changes. @git"
 
 # Execute the qchat command, ensuring all flags are correct.
-qchat chat  "Based on the latest git changes, please generate a summary of the README.md file. Include any new features or breaking changes." --output-file "temp_readme_update.md"
+q chat  "Based on the latest git changes, please generate a summary of the README.md file. Include any new features or breaking changes." >> "temp_readme_update.md"
 
 # Append the new content to the main README.md file.
 cat temp_readme_update.md >> README.md
