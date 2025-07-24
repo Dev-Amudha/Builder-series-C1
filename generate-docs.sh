@@ -20,7 +20,7 @@ Do not add any conversational text before or after the markdown content.
 # Use a 'here document' (<<EOF) to send the multi-line prompt
 # to the 'q chat' command non-interactively.
 # The --quiet flag minimizes extra output from the q cli itself.
-q chat --quiet -- <<EOF > README.md
+q chat -- --quiet -- <<EOF > README.md
 $PROMPT
 /doc
 EOF
