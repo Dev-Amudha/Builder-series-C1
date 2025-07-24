@@ -22,7 +22,7 @@ Do not add any conversational text before or after the markdown content.
 # The --quiet flag minimizes extra output from the q cli itself.
 
 # q chat -- --quiet -- <<EOF > README.md
-qchat chat --prompt "$prompt" --output-file "README_temp.md"
+qchat chat -- --prompt "$prompt" --output-file "README_temp.md"
 
 #$PROMPT
 #/doc
